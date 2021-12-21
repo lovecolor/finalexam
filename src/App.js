@@ -34,7 +34,15 @@ function App() {
     e.preventDefault();
     console.log(form);
     const data = await api.postNewBlog(form);
-    data && fetchData();
+    if (data) {
+      fetchData();
+      setOpenModal(false);
+      setForm({
+        title: "",
+        body: "",
+        author: "",
+      });
+    }
   };
   return (
     <div className="App">
